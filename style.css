@@ -9,6 +9,16 @@ h1 {
   text-align: center;
   color: red;
 } 
+.container {
+    text-align: center;
+}
+
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 
 form{
     color: blue;
@@ -25,3 +35,4 @@ form > input[type="submit"]{
     grid-column: span 2;
 
 }
+
