@@ -1,0 +1,42 @@
+body {
+  background-color: rgb(192,192,192);
+ }
+
+
+h1 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: bold;  
+    text-align: center;
+}
+
+   .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+  flex-direction: column;  
+  height: 100vh;
+  text-align: center;
+}
+    
+   .parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+  height: 100vh;           
+}   
+
+form{
+    color: blue;
+    font-size: 12px;
+    background-color: lightgoldenrodyellow;
+    padding: 10px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: [label] auto [input] 1fr;
+}
+
+
+form > input[type="submit"]{
+    grid-column: span 2;
+}
