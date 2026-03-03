@@ -45,6 +45,23 @@ textarea {
     /* Optional: allows manual vertical resize, but prevents horizontal */
     resize: vertical;
 }
+       
+form {
+    color: blue;
+    font-size: 12px;
+    background-color: lightgoldenrodyellow;
+    padding: 10px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: [label] auto [input] 1fr;
+    text-decoration-color: red;
+}
+
+form > input[type="submit"]{
+    grid-column: span 2;
+}
+
+
 
 
 
