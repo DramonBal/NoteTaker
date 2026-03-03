@@ -33,6 +33,29 @@ form{
 
 form > input[type="submit"]{
     grid-column: span 2;
-
 }
+
+.textarea-container {
+    /* Optional: Sets a max width for large screens but lets it shrink on mobile */
+    max-width: 600px;
+    margin: 0 auto; /* Centers the container */
+    padding: 15px;
+}
+
+#responsive-textarea {
+    /* Makes the textarea take the full width of its container */
+    width: 100%;
+    /* Ensures padding/border are included in the 100% width calculation */
+    box-sizing: border-box;
+   
+    /* Makes the height automatically adjust to content (modern CSS property) */
+    field-sizing: content;
+
+    /* Sets a minimum height */
+    min-height: 100px;
+   
+    /* Optional: allows manual vertical resize, but prevents horizontal */
+    resize: vertical;
+}
+
 
