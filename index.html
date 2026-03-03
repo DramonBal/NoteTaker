@@ -10,7 +10,9 @@
     </head>
     
     <body>       
-      
+        <input type="text" x-webkit-speech="x-webkit-speech" />
+             <!-- Or for larger notes -->
+         <textarea x-webkit-speech="x-webkit-speech"></textarea>
        
              <div class="textarea-container">                 
                 <textarea id="responsive-textarea" placholder=Start typing here..."></textarea> 
@@ -18,11 +20,9 @@
                 <textarea id="responsive-textarea" placholder=Start typing here..."></textarea>
                 <textarea id="responsive-textarea" placholder=Start typing here..."></textarea> 
                 <textarea id="responsive-textarea" placholder=Start typing here..."></textarea>
-                <textarea id="responsive-textarea" placholder=Start typing here..."></textarea> 
-                <textarea id="responsive-textarea" placholder=Start typing here..."></textarea>
-                <textarea id="responsive-textarea" placholder=Start typing here..."></textarea>
-                 <textarea id="responsive-textarea" placholder=Start typing here..."></textarea> 
-                 <textarea id="responsive-textarea" placholder=Start typing here..."></textarea>                                       
+               
+                 <textarea id="note-text" rows="10" cols="30"></textarea>
+                 <button id="start-btn">Start Dictation</button>
            
              <div class="container">
                            
@@ -33,6 +33,7 @@
          </form>
       </body>
 </html>
+
 
 
 
