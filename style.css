@@ -1,5 +1,6 @@
 body {
-  background-color: rgb(192,192,192);
+  background-color: #ADD8E6;
+ /* background-color: rgb(192,192,192);*/
  }
 
 h1 {
@@ -43,6 +44,7 @@ textarea {
     /* Optional: allows manual vertical resize, but prevents horizontal */
     resize: vertical;
 }
+
 
 
 
