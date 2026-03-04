@@ -9,33 +9,78 @@
          
     </head>
     
-    <body>       
-       <button id="startButton">Start Voice Input</button>
-        <div id="output"></div>
-        <script>
-            const startButton = document.getElementById('startButton');
-const outputDiv = document.getElementById('output');
+    <body>  
+        <h1>Voice Note Taker</h1>
+          <button id="startButton">Start Recording</button>
+    <button id="stopButton" disabled>Stop Recording</button>
+    <textarea id="noteTextarea" rows="10" cols="50" placeholder="Your notes will appear here..."></textarea>
+    <p id="status"></p>
+        <script src="script.js">
+        
+         const startButton = document.getElementById('startButton');
+const stopButton = document.getElementById('stopButton');
+const noteTextarea = document.getElementById('noteTextarea');
+const statusDiv = document.getElementById('status');
 
-const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
-recognition.lang = 'en-US';
+// Use window.SpeechRecognition or window.webkitSpeechRecognition for compatibility
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-recognition.onstart = () => {
-startButton.textContent = 'Listening...';
-};
+if (!SpeechRecognition) {
+    statusDiv.textContent = 'Speech recognition not supported in this browser. Please use Chrome or Edge.';
+    startButton.disabled = true;
+    stopButton.disabled = true;
+} else {
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true; // For continuous dictation
+    recognition.interimResults = true; // To display results in real-time
+    recognition.lang = 'en-US'; // Set the language
 
-recognition.onresult = (event) => {
-const transcript = event.results[0][0].transcript;
-outputDiv.textContent = transcript;
-};
+    recognition.onstart = () => {
+        startButton.disabled = true;
+        stopButton.disabled = false;
+        statusDiv.textContent = 'Listening... Speak now.';
+    };
 
-recognition.onend = () => {
-startButton.textContent = 'Start Voice Input';
-};
+    recognition.onresult = (event) => {
+        let interimTranscript = '';
+        let finalTranscript = '';
 
-startButton.addEventListener('click', () => {
-recognition.start();
-});
-          
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            if (event.results[i].isFinal) {
+                finalTranscript += event.results[i][0].transcript + ' ';
+            } else {
+                interimTranscript += event.results[i][0].transcript;
+            }
+        }
+       
+        // Append final transcript to the textarea
+        noteTextarea.value += finalTranscript;
+        // Optional: display interim results somewhere else or as a temporary text
+        // console.log('Interim transcript: ', interimTranscript);
+    };
+
+    recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        statusDiv.textContent = 'Error: ' + event.error;
+        startButton.disabled = false;
+        stopButton.disabled = true;
+    };
+
+    recognition.onend = () => {
+        startButton.disabled = false;
+        stopButton.disabled = true;
+        statusDiv.textContent = 'Recording ended.';
+    };
+
+    startButton.addEventListener('click', () => {
+        recognition.start();
+    });
+
+    stopButton.addEventListener('click', () => {
+        recognition.stop(); // Stop the service
+    });
+}   
+                   
         </script>
             <textarea x-webkit-speech="x-webkit-speech"></textarea> 
              <div class="textarea-container">                 
@@ -54,6 +99,7 @@ recognition.start();
          </form>
       </body>
 </html>
+
 
 
 
