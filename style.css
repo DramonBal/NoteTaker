@@ -59,6 +59,19 @@ form {
 
 form > input[type="submit"]{
     grid-column: span 2;
+    pointer-events: auto;
+}
+
+button[type="clear"] {
+  background-color: #f44336; /* Red background */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button[type="clear"]:hover {
+  background-color: #da190b;
 }
 
 
